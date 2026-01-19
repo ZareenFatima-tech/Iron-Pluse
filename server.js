@@ -155,7 +155,13 @@ io.on('connection', (socket) => {
 });
 
 // Start Server
-server.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-    console.log(`Socket.IO enabled`);
-});
+// Start Server only if running directly (locally)
+if (require.main === module) {
+    server.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}`);
+        console.log(`Socket.IO enabled`);
+    });
+}
+
+// Export the app for Vercel
+module.exports = app;
