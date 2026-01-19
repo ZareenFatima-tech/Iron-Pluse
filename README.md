@@ -27,11 +27,6 @@ A comprehensive, full-stack Gym Management Web Application featuring separate pa
     node server.js
     ```
 
-## 🔗 Testing Link
-
-Once the server is running, you can access the application locally at:
-
-# [http://localhost:3000](http://localhost:3000)
 
 ### 🔑 Test Credentials
 
