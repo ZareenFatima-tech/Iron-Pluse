@@ -1,0 +1,217 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Kanwal",
+      "email": "kanwal@example.com",
+      "phone": "03001234567",
+      "password": "password123",
+      "role": "USER"
+    },
+    {
+      "id": "1768841442812",
+      "name": " Zareen Fatima",
+      "email": "zareenfatima114@gmail.com",
+      "phone": "03201091120",
+      "password": "zareen",
+      "role": "USER"
+    },
+    {
+      "id": "1768843201450",
+      "name": "Samreen Afzal",
+      "email": "xarrifatima127@gmail.com",
+      "phone": "03184426082",
+      "password": "zareen",
+      "role": "USER"
+    },
+    {
+      "id": "1768843249643",
+      "name": "Samreen Afzal",
+      "email": "khaiyalapna@gmail.com",
+      "phone": "03184426082",
+      "password": "zareen",
+      "role": "USER"
+    }
+  ],
+  "admins": [
+    {
+      "id": "1",
+      "name": "Admin User",
+      "email": "admin@example.com",
+      "phone": "03007654321",
+      "password": "admin123",
+      "role": "ADMIN"
+    },
+    {
+      "id": "1768846306690",
+      "name": "Samreen Afzal",
+      "email": "khaiyalapna@gmai.com",
+      "phone": "03184426082",
+      "password": "zareen",
+      "role": "ADMIN"
+    }
+  ],
+  "gyms": [
+    {
+      "id": "1",
+      "name": "Iron Paradise",
+      "location": "Lahore",
+      "price": 5000,
+      "facilities": [
+        "Cardio",
+        "Weight Training"
+      ],
+      "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=400",
+      "contact": "03001234567",
+      "openingTime": "06:00",
+      "closingTime": "23:00",
+      "address": "DHA Phase 5",
+      "status": "Open",
+      "capacity": 100
+    },
+    {
+      "id": "2",
+      "name": "Titan Fitness",
+      "location": "Karachi",
+      "price": 4500,
+      "facilities": [
+        "CrossFit",
+        "Weight Training"
+      ],
+      "image": "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=400",
+      "contact": "03002345678",
+      "openingTime": "05:00",
+      "closingTime": "22:00",
+      "address": "Clifton",
+      "status": "Open",
+      "capacity": 80
+    },
+    {
+      "id": "3",
+      "name": "The Fuel Box",
+      "location": "Islamabad",
+      "price": 6500,
+      "facilities": [
+        "Fitness",
+        "CrossFit"
+      ],
+      "image": "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=400",
+      "contact": "03003456789",
+      "openingTime": "07:00",
+      "closingTime": "21:00",
+      "address": "F-7 Markaz",
+      "status": "Open",
+      "capacity": 40
+    },
+    {
+      "id": "4",
+      "name": "Olympus Gym",
+      "location": "Lahore",
+      "price": 3500,
+      "facilities": [
+        "Cardio",
+        "Fitness"
+      ],
+      "image": "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=400",
+      "contact": "03004567890",
+      "openingTime": "06:00",
+      "closingTime": "23:00",
+      "address": "Gulberg III",
+      "status": "Open",
+      "capacity": 120
+    },
+    {
+      "id": "5",
+      "name": "Core Strength Studio",
+      "location": "Karachi",
+      "price": 8000,
+      "facilities": [
+        "Weight Training",
+        "Pilates"
+      ],
+      "image": "https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=400",
+      "contact": "03005678901",
+      "openingTime": "08:00",
+      "closingTime": "20:00",
+      "address": "Gulshan-e-Iqbal",
+      "status": "Open",
+      "capacity": 25
+    },
+    {
+      "id": "1768848016617",
+      "name": "Heavens Gym",
+      "location": "Lahore",
+      "address": "4500 ",
+      "capacity": 100,
+      "price": 3500,
+      "facilities": [
+        "All Categories"
+      ],
+      "contact": "onsite",
+      "image": "https://www.pexels.com/search/gym/",
+      "openingTime": "06:00",
+      "closingTime": "22:00",
+      "status": "Open",
+      "lastUpdated": "2026-01-19T18:40:16.617Z"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "1768845544467",
+      "userId": "1768841442812",
+      "userName": " Zareen Fatima",
+      "userPhone": "03201091120",
+      "gymId": "1",
+      "date": "2020-02-20",
+      "slot": "06:00 - 08:00",
+      "status": "Confirmed",
+      "timestamp": "2026-01-19T17:59:04.394Z"
+    },
+    {
+      "id": "1768845591565",
+      "userId": "1768841442812",
+      "userName": " Zareen Fatima",
+      "userPhone": "03201091120",
+      "gymId": "1",
+      "date": "2026-02-20",
+      "slot": "06:00 - 08:00",
+      "status": "Confirmed",
+      "timestamp": "2026-01-19T17:59:51.557Z"
+    },
+    {
+      "id": "1768845618173",
+      "userId": "1768841442812",
+      "userName": " Zareen Fatima",
+      "userPhone": "03201091120",
+      "gymId": "3",
+      "date": "2026-02-20",
+      "slot": "18:00 - 20:00",
+      "status": "Cancelled",
+      "timestamp": "2026-01-19T18:00:18.168Z"
+    },
+    {
+      "id": "1768848577032",
+      "userId": "1768841442812",
+      "userName": " Zareen Fatima",
+      "userPhone": "03201091120",
+      "gymId": "2",
+      "date": "2026-02-05",
+      "slot": "18:00 - 20:00",
+      "status": "Pending",
+      "timestamp": "2026-01-19T18:49:37.029Z"
+    }
+  ],
+  "payments": [
+    {
+      "id": "PAY-1768848602861",
+      "userId": "1768841442812",
+      "userName": " Zareen Fatima",
+      "amount": 4500,
+      "method": "JazzCash",
+      "account": "03209909900",
+      "description": "Gym Fee Payment",
+      "status": "Success",
+      "date": "2026-01-19T18:50:02.861Z"
+    }
+  ]
+}

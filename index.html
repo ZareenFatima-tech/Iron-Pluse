@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron Pulse | Premium Gym Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg nav-glass fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold" href="index.html">
+                <i class="bi bi-lightning-charge-fill text-primary"></i> IRON PULSE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="dashboard.html">User</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="admin-dashboard.html">Admin</a></li>
+                    <li class="nav-item ms-lg-3" id="nav-auth-btns">
+                        <a href="login.html" class="btn btn-outline-light btn-sm me-2">Login</a>
+                        <a href="register.html" class="btn btn-primary-custom btn-sm">Join Now</a>
+                    </li>
+                    <li class="nav-item d-none" id="nav-user-profile">
+                        <div class="dropdown">
+                            <button class="btn btn-link text-white dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle"></i> <span id="username-display"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" id="btn-profile-link" href="dashboard.html">My
+                                        Dashboard</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><button class="dropdown-item" id="logout-btn">Logout</button></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section text-center">
+        <div class="container animate-fade">
+            <h1 class="display-3 fw-bold mb-4">Elevate Your <span class="text-primary">Fitness</span></h1>
+            <p class="lead text-muted mb-5">Find the perfect gym, book sessions, and track your progress all in one
+                place.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-9">
+                    <div class="glass-card p-3">
+                        <div class="row g-2">
+                            <div class="col-md-4">
+                                <input type="text" id="search-name" class="form-control form-control-custom"
+                                    placeholder="Search Gym Name...">
+                            </div>
+                            <div class="col-md-3">
+                                <select id="filter-city" class="form-select form-control-custom">
+                                    <option value="">All Cities</option>
+                                    <option value="Lahore">Lahore</option>
+                                    <option value="Karachi">Karachi</option>
+                                    <option value="Islamabad">Islamabad</option>
+                                    <option value="Faisalabad">Faisalabad</option>
+                                    <option value="Multan">Multan</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select id="filter-spec" class="form-select form-control-custom">
+                                    <option value="">All Expertise</option>
+                                    <option value="Cardio">Cardio</option>
+                                    <option value="Weight Training">Weight Training</option>
+                                    <option value="CrossFit">CrossFit</option>
+                                    <option value="Yoga">Yoga</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button id="btn-search" class="btn btn-primary-custom w-100">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <div id="alert-container"></div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold">Available Gyms</h2>
+            <div class="text-muted" id="gym-count">Loading gyms...</div>
+        </div>
+        <div class="row" id="gym-list-container">
+            <!-- Dynamic Content -->
+        </div>
+    </main>
+
+    <!-- Modal for Gym Details -->
+    <div class="modal fade" id="gymModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content glass-card bg-dark border-0">
+                <div class="modal-header border-bottom border-secondary">
+                    <h5 class="modal-title text-white" id="modal-gym-name">Gym Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-white" id="modal-gym-body"></div>
+                <div class="modal-footer border-top border-secondary">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="btn-book-modal" class="btn btn-primary-custom">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 border-top border-secondary mt-5">
+        <div class="container text-center">
+            <p class="text-muted mb-0">&copy; 2026 Iron Pulse. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script type="module">
+        import utils from './js/utils.js';
+        import gyms from './js/gyms.js';
+        import responsive from './js/responsive.js';
+
+        let allGyms = [];
+        const socket = io('http://localhost:3000');
+
+        socket.on('connect', () => {
+            console.log('Connected to real-time updates');
+        });
+
+        socket.on('gym_added', (newGym) => {
+            utils.showAlert('New Gym Added!', 'info');
+            allGyms.push(newGym);
+            render(allGyms);
+        });
+
+        socket.on('gym_updated', (updatedGym) => {
+            const index = allGyms.findIndex(g => g.id === updatedGym.id);
+            if (index !== -1) {
+                allGyms[index] = updatedGym;
+                render(allGyms);
+                // If modal is open for this gym, update it
+                const modalTitle = document.getElementById('modal-gym-name');
+                if (modalTitle && modalTitle.textContent === updatedGym.name) {
+                    window.viewGymDetails(updatedGym.id);
+                }
+            }
+        });
+
+        socket.on('gym_deleted', (gymId) => {
+            allGyms = allGyms.filter(g => g.id !== gymId);
+            render(allGyms);
+        });
+
+        async function init() {
+            const user = utils.getCurrentUser();
+            if (user) {
+                document.getElementById('nav-auth-btns').classList.add('d-none');
+                document.getElementById('nav-user-profile').classList.remove('d-none');
+                document.getElementById('username-display').textContent = user.name;
+
+                if (user.role === 'ADMIN') {
+                    // Custom Profile Link logic if needed, otherwise handled by dropdown
+                    document.getElementById('btn-profile-link').href = 'admin-dashboard.html';
+                }
+            }
+
+            allGyms = await utils.fetchData('gyms');
+            if (allGyms) {
+                render(allGyms);
+            } else {
+                document.getElementById('gym-count').textContent = 'Server not reachable.';
+            }
+
+            document.getElementById('logout-btn')?.addEventListener('click', utils.logout);
+            document.getElementById('btn-search').addEventListener('click', applyFilters);
+        }
+
+        function render(list) {
+            gyms.renderGymList(list, 'gym-list-container');
+            document.getElementById('gym-count').textContent = `Showing ${list.length} gyms`;
+        }
+
+        function applyFilters() {
+            const filters = {
+                name: document.getElementById('search-name').value,
+                city: document.getElementById('filter-city').value,
+                specialization: document.getElementById('filter-spec').value
+            };
+            const filtered = gyms.filterGyms(allGyms, filters);
+            render(filtered);
+        }
+
+        window.viewGymDetails = (id) => {
+            const gym = allGyms.find(g => g.id === id);
+            if (!gym) return;
+
+            document.getElementById('modal-gym-name').textContent = gym.name;
+            const isOpen = utils.isGymOpen(gym.openingTime, gym.closingTime);
+
+            document.getElementById('modal-gym-body').innerHTML = `
+                <div class="row">
+                    <div class="col-md-6 mb-3 mb-md-0">
+                        <img src="${gym.image}" class="img-fluid rounded" alt="${gym.name}">
+                    </div>
+                    <div class="col-md-6">
+                        <p class="mb-2"><i class="bi bi-geo-alt text-primary"></i> ${gym.address}, ${gym.city}</p>
+                        <p class="mb-2"><i class="bi bi-clock text-primary"></i> ${gym.openingTime} - ${gym.closingTime} 
+                            <span class="status-badge ${isOpen ? 'status-open' : 'status-closed'} ms-2">${isOpen ? 'Open Now' : 'Closed'}</span>
+                        </p>
+                        <p class="mb-2"><i class="bi bi-people text-primary"></i> Max Capacity: ${gym.capacity || 'N/A'}</p>
+                        <p class="mb-3"><i class="bi bi-cash text-primary"></i> Fee: <span class="fw-bold">${utils.formatCurrency(gym.price)}</span></p>
+                        <h6>Facilities:</h6>
+                        <div>${(gym.facilities || []).map(s => `<span class="badge bg-secondary me-1">${s}</span>`).join('')}</div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('btn-book-modal').onclick = () => {
+                const user = utils.getCurrentUser();
+                if (!user) {
+                    utils.showAlert('Please login to book a session.', 'warning');
+                    setTimeout(() => window.location.href = 'login.html', 1500);
+                } else if (user.role === 'ADMIN') {
+                    utils.showAlert('Admins cannot book sessions.', 'warning');
+                } else {
+                    window.location.href = `dashboard.html?gymId=${id}`;
+                }
+            };
+
+            new bootstrap.Modal(document.getElementById('gymModal')).show();
+        };
+
+        init();
+    </script>
+</body>
+
+</html>
