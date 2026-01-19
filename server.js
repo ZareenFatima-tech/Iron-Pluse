@@ -37,6 +37,16 @@ app.use('/gyms', gymRoutes);
 app.post('/login', login);
 app.post('/register', register);
 
+// Explicitly serve index.html for root
+app.get('/', (req, res) => {
+    const indexPath = path.join(__dirname, 'index.html');
+    if (require('fs').existsSync(indexPath)) {
+        res.sendFile(indexPath);
+    } else {
+        res.sendFile(path.join(process.cwd(), 'index.html')); // Fallback to cwd
+    }
+});
+
 // Legacy/Generic Routes (for other resources like bookings/payments if needed)
 app.get('/:resource', (req, res, next) => {
     if (req.path.startsWith('/gyms')) return next(); // Skip if handled by specific route
